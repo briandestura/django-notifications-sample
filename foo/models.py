@@ -7,6 +7,7 @@ from notifications.signals import notify
 
 User = get_user_model()
 
+
 # Create your models here.
 class Badassness(models.Model):
     score = models.PositiveIntegerField(default=0)
@@ -18,12 +19,9 @@ class Badassness(models.Model):
         return str(f"{self.user}: {self.score}, level: {self.level}")
 
 
-
-
-
 def my_notifier(sender, instance, created, **kwargs):
     if created:
-        notify.send(sender, actor=instance.user,
+        notify.send(sender=instance.user,
                     verb=f"New Badass ({instance.user}) created!", 
                     recipient=instance.user 
                     )

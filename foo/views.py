@@ -10,3 +10,7 @@ class BadassListView(ListView):
     paginate_by = 5
     context_object_name = 'badasses'
     template_name = 'foo/badass_list.html'
+
+
+def test(request):
+    return render(request, 'foo/test_live.html')
